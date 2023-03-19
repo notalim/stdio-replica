@@ -1,8 +1,11 @@
 .DS Store
 .vscode
+*.out
+*.o
 *.txt
 text
 stdout_expected
 stdout_expected-2
 s23-hw4.pdf
 filename.txt
+
