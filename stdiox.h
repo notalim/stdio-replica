@@ -1,3 +1,10 @@
+/*
+name: alim
+date: march 21, 2023
+pledge: i pledge my honor that i have abided by the stevens honor system
+extra credit: done
+*/
+
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>

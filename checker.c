@@ -1,6 +1,5 @@
 #include "stdiox.h"
 #include <time.h>
-#include <stdio.h>
 
 #define EXEC(x) \
         if (x == -1) fprintfx("", 's', strerror(errno));
@@ -10,7 +9,7 @@
 
 int main(int argc, char const *argv[]) {
 
-    printf("\e[1;1H\e[2J");
+    //printf("\e[1;1H\e[2J");
 
     /* For generating random string
         Needs to include <time.h>
@@ -18,6 +17,7 @@ int main(int argc, char const *argv[]) {
     srand(time(NULL));
 
     int array[5] = {1,2,-9,12,-3};
+    float f_array[5] = {1.2,2.13,-9.1,12.5,-3.3};
     char* string = "Hello!";
 
     /*****************************
@@ -43,6 +43,12 @@ int main(int argc, char const *argv[]) {
     for (size_t i = 0; i < 5; i++) {
         EXEC(fprintfx("", 'd', &array[i]))
     }
+
+    /* Print floats to stdout */
+    for (size_t i = 0; i < 5; i++) {
+        EXEC(fprintfx("", 'f', &f_array[i]))
+    }
+
 
     /* Print string to stdout */
     EXEC(fprintfx("", 's', string))
@@ -80,6 +86,7 @@ int main(int argc, char const *argv[]) {
 
     char newstr[1024] = {0};
     int  num;
+    float flo;
 
 
     /* Error: File doesn't exist */
@@ -104,6 +111,9 @@ int main(int argc, char const *argv[]) {
     /* Receive an integer from stdin */
     EXEC(fscanfx("", 'd', &num))
     EXEC(fprintfx("", 'd', &num))
+    /* Receive a float from stdin */
+    EXEC(fscanfx("", 'f', &flo))
+    EXEC(fprintfx("", 'f', &flo))
 
     /* Read a file of strings */
     while (!fscanfx(FILESHORT, 's', newstr)) {
